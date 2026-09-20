@@ -11,7 +11,6 @@ import { ArrowUpRight, Menu, X } from "lucide-react";
 import Image from "next/image";
 import { links } from "@/data/data";
 
-
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -58,7 +57,7 @@ export default function Header() {
         <a href="#" onClick={closeMenu} className="flex items-center gap-3">
           <div className="size-12 overflow-hidden rounded-full bg-[#222]">
             <Image
-              src="/profile.png"
+              src="/profile.ico"
               alt="Ahmed Reda"
               width={80}
               height={80}
