@@ -121,9 +121,9 @@ export default function Skills() {
             viewport={{ amount: 0.15 }}
             className="mx-auto mt-10 flex max-w-[720px] flex-wrap justify-center gap-3"
           >
-            {skills.map((skill) => (
+            {skills.slice(0, 14).map((skill, index) => (
               <motion.div
-                key={skill.name}
+                key={index}
                 variants={skillVariants}
                 className="
                 group flex h-14 items-center gap-2.5

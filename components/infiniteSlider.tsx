@@ -13,9 +13,9 @@ export default function InfiniteSlider() {
   const [groupWidth, setGroupWidth] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
-  const normalSpeed = 50;
+  const normalSpeed = 30;
 
-  const slowSpeed = 25;
+  const slowSpeed = 20;
 
   const currentSpeed = useRef(normalSpeed);
 
@@ -66,11 +66,10 @@ export default function InfiniteSlider() {
       onMouseLeave={() => setIsHovered(false)}
     >
       <motion.div style={{ x }} className="flex w-max gap-6">
-        {/* Group 1 */}
         <div ref={groupRef} className="flex shrink-0 gap-6">
-          {skills.map((skill) => (
+          {skills.map((skill, index) => (
             <div
-              key={skill.name}
+              key={index}
               className="flex size-18 shrink-0 items-center justify-center
                rounded-2xl border border-white/[0.06] bg-white/[0.05]"
             >
@@ -79,24 +78,6 @@ export default function InfiniteSlider() {
                 alt={skill.name}
                 width={50}
                 height={50}
-                className="object-contain opacity-60"
-              />
-            </div>
-          ))}
-        </div>
-
-        {/* Group 2 */}
-        <div className="flex shrink-0 gap-6">
-          {skills.map((skill) => (
-            <div
-              key={`duplicate-${skill.name}`}
-              className="flex size-20 shrink-0 items-center justify-center rounded-2xl border border-white/[0.06] bg-white/[0.02]"
-            >
-              <Image
-                src={skill.icon}
-                alt={skill.name}
-                width={40}
-                height={40}
                 className="object-contain opacity-60"
               />
             </div>
