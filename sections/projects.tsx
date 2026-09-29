@@ -24,6 +24,15 @@ const projects = [
     github: "https://github.com/ahmed-dev-reda/dev-path",
     live: "https://become-a-coder.vercel.app/",
   },
+ {
+  title: "Trendlama",
+  description:
+    "A modern e-commerce platform for fashion, electronics, and home products with product browsing, filtering, cart, and checkout UI.",
+  image: "/trendlama.png",
+  tags: ["Next.js", "TypeScript", "Tailwind", "Redux Toolkit", "shadcn/ui"],
+  github: "https://github.com/ahmed-dev-reda/e-commerce-ui",
+  live: "https://client-e-commerce-ui.vercel.app/",
+},
 ];
 
 function ProjectCard({
