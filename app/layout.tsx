@@ -1,14 +1,19 @@
-import { Manrope } from "next/font/google";
+import { Inter, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
-import Header from "@/sections/header";
-import { Toaster } from "sonner";
-import GoToTop from "../components/go-to-top";
-import LoadingScreen from "../components/LoadingScreen";
 import type { Metadata } from "next";
 
-const manrope = Manrope({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
+  weight: ["600", "700"],
+  variable: "--font-display",
+  display: "swap",
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-body",
+  display: "swap",
 });
 
 const siteUrl = "https://ahmed-reda-dev.vercel.app";
@@ -63,7 +68,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Ahmed Reda - Frontend Developer",
@@ -76,7 +81,7 @@ export const metadata: Metadata = {
     title: "Ahmed Reda | Frontend Developer",
     description:
       "Frontend Developer building modern web experiences with React and Next.js.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
 
   robots: {
@@ -102,17 +107,12 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${manrope.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#111111]">
-        <LoadingScreen />
-
-        <Header />
-
-        <Toaster />
-
+    <html
+      lang="en"
+      className={`${jakarta.variable} ${inter.variable} h-full antialiased`}
+    >
+      <body className="flex min-h-full flex-col bg-surface font-body text-on-surface">
         {children}
-
-        <GoToTop />
       </body>
     </html>
   );
