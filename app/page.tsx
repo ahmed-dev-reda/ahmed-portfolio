@@ -1,20 +1,11 @@
-import About from "@/sections/about";
-import CTA from "@/sections/cta";
-import Footer from "@/sections/footer";
+import Hero from "@/components/hero";
+import Projects from "@/components/projects";
 
-import Hero from "@/sections/hero";
-import Projects from "@/sections/projects";
-import Skills from "@/sections/skills";
-
-export default function Home() {
+export default function RootPage() {
   return (
-    <main className="bg-[#111111] text-white">
+    <main>
       <Hero />
-      <About />
-      <Skills />
       <Projects />
-      <CTA />
-      <Footer />
     </main>
   );
 }

@@ -1,15 +1,10 @@
-import { Manrope } from "next/font/google";
-import "./globals.css";
-import Header from "@/sections/header";
-import { Toaster } from "sonner";
-import GoToTop from "../components/go-to-top";
-import LoadingScreen from "../components/LoadingScreen";
 import type { Metadata } from "next";
 
-const manrope = Manrope({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
+import "./globals.css";
+import { Inter } from "next/font/google";
+import Header from "@/components/header";
+
+const inter = Inter({ subsets: ["latin"] });
 
 const siteUrl = "https://ahmed-reda-dev.vercel.app";
 
@@ -63,7 +58,7 @@ export const metadata: Metadata = {
 
     images: [
       {
-        url: "/og-image.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Ahmed Reda - Frontend Developer",
@@ -76,7 +71,7 @@ export const metadata: Metadata = {
     title: "Ahmed Reda | Frontend Developer",
     description:
       "Frontend Developer building modern web experiences with React and Next.js.",
-    images: ["/og-image.png"],
+    images: ["/og-image.jpg"],
   },
 
   robots: {
@@ -102,17 +97,10 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${manrope.className} h-full antialiased`}>
-      <body className="min-h-full flex flex-col bg-[#111111]">
-        <LoadingScreen />
-
+    <html suppressHydrationWarning>
+      <body className={`${inter.className} min-h-full antialiased`}>
         <Header />
-
-        <Toaster />
-
         {children}
-
-        <GoToTop />
       </body>
     </html>
   );
