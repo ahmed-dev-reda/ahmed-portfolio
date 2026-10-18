@@ -1,10 +1,17 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { Inter } from "next/font/google";
-import Header from "@/components/header";
+import { Anton, Inter } from "next/font/google";
+import { Toaster } from "sonner";
+import Header from "@/components/sections/header";
 
-const inter = Inter({ subsets: ["latin"] });
+const anton = Anton({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-anton",
+});
+
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
 const siteUrl = "https://ahmed-reda-dev.vercel.app";
 
@@ -98,9 +105,22 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html suppressHydrationWarning>
-      <body className={`${inter.className} min-h-full antialiased`}>
+      <body
+        className={`${anton.variable} ${inter.variable} min-h-full bg-background font-body text-foreground antialiased`}
+      >
         <Header />
         {children}
+        <Toaster
+          position="bottom-right"
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: "#1a1a1a",
+              border: "1px solid rgba(211, 233, 122, 0.25)",
+              color: "#ffffff",
+            },
+          }}
+        />
       </body>
     </html>
   );
