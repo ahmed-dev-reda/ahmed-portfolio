@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 
 import "./globals.css";
 import { Anton, Inter } from "next/font/google";
-import { Toaster } from "sonner";
+import { ThemeProvider } from "next-themes";
 import Header from "@/components/sections/header";
+import AppToaster from "@/components/providers/toaster";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -104,23 +105,23 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html suppressHydrationWarning>
+    <html
+      suppressHydrationWarning
+      className="dark"
+    >
       <body
         className={`${anton.variable} ${inter.variable} min-h-full bg-background font-body text-foreground antialiased`}
       >
-        <Header />
-        {children}
-        <Toaster
-          position="bottom-right"
-          theme="dark"
-          toastOptions={{
-            style: {
-              background: "#1a1a1a",
-              border: "1px solid rgba(211, 233, 122, 0.25)",
-              color: "#ffffff",
-            },
-          }}
-        />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem={false}
+          themes={["dark", "light"]}
+        >
+          <Header />
+          {children}
+          <AppToaster />
+        </ThemeProvider>
       </body>
     </html>
   );

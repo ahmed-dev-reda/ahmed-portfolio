@@ -43,7 +43,7 @@ export default function ProjectImage({
           src={project.image}
           alt={`${project.title} preview`}
           fill
-          sizes="(min-width: 768px) 40vw, 90vw"
+          sizes="(min-width: 768px) 40vw, 70vw"
           className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
 
@@ -73,7 +73,7 @@ export default function ProjectImage({
               type="button"
               aria-label="Close preview"
               onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-card text-white transition hover:bg-lime hover:text-[#1a2a00] sm:right-8 sm:top-8"
+              className="absolute right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-card text-foreground transition hover:bg-lime hover:text-[#1a2a00] sm:right-8 sm:top-8"
             >
               <FiX size={18} />
             </button>
@@ -102,7 +102,7 @@ export default function ProjectImage({
                 />
               </div>
               <figcaption className="flex justify-between items-center ">
-                <span className="display-heading text-white">
+                <span className="display-heading text-foreground">
                   {project.title}
                 </span>
                 <ProjectLinks project={project} />

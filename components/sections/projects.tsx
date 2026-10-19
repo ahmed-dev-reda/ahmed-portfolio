@@ -6,7 +6,7 @@ import ProjectImage from "@/components/sections/project-image";
 function ProjectRow({ label, value }: { label: string; value: string }) {
   return (
     <div className="flex items-center justify-between border-b border-muted-line py-3 text-sm">
-      <span className="text-white">{label}</span>
+      <span className="text-foreground">{label}</span>
       <span className="text-secondary">{value}</span>
     </div>
   );
@@ -14,10 +14,10 @@ function ProjectRow({ label, value }: { label: string; value: string }) {
 
 export function ProjectLinks({ project }: { project: FeaturedProject }) {
   const linkClasses =
-    "inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-lime underline underline-offset-4 transition hover:text-white";
+    "inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-lime-text underline underline-offset-4 transition hover:text-foreground";
 
   return (
-    <div className="mt-5 flex flex-wrap items-center gap-6">
+    <div className="flex flex-wrap items-center gap-6">
       {project.liveUrl && (
         <a
           href={project.liveUrl}
@@ -44,13 +44,7 @@ export function ProjectLinks({ project }: { project: FeaturedProject }) {
   );
 }
 
-function ProjectCard({
-  project,
-  index,
-}: {
-  project: FeaturedProject;
-  index: number;
-}) {
+function ProjectCard({ project }: { project: FeaturedProject }) {
   return (
     <article
       id={project.id}
@@ -58,25 +52,19 @@ function ProjectCard({
     >
       {/* Preview card — transparent so the page background shows through */}
       <div className="relative rounded-2xl p-4 transition-colors duration-300 hover:border-[#484848] sm:p-6">
-        {project.category && (
-          <span className="absolute -top-3 left-6 z-10 rounded-full bg-white px-4 py-2 text-[10px] font-semibold uppercase tracking-widest text-[#1a2a00]">
-            {project.category}
-          </span>
-        )}
-
         <ProjectImage project={project} />
       </div>
 
       {/* Info */}
       <div className="flex flex-col justify-center">
-        <h3 className="display-heading text-2xl leading-tight text-white sm:text-3xl">
+        <h3 className="display-heading text-2xl leading-tight text-foreground sm:text-3xl">
           {project.title}
         </h3>
 
         <p className="mt-4 text-sm text-secondary">{project.description}</p>
 
-        <div className="mt-6">
-          <p className="pb-3 text-[11px] font-bold uppercase tracking-widest text-white">
+        <div className="my-6">
+          <p className="pb-3 text-[11px] font-bold uppercase tracking-widest text-foreground">
             Project info
           </p>
           <ProjectRow label="Year" value={project.year} />
@@ -100,7 +88,7 @@ export default function Projects() {
     <section id="work" className="section-divider scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6 py-16 sm:px-10 md:py-20 lg:px-[3%] lg:py-24">
         <Reveal>
-          <h2 className="display-heading text-4xl text-white sm:text-5xl md:text-6xl">
+          <h2 className="display-heading text-4xl text-foreground sm:text-5xl md:text-6xl">
             Featured Projects
           </h2>
           <p className="mt-4 max-w-md text-sm text-secondary">
@@ -112,7 +100,7 @@ export default function Projects() {
         <div className="mt-14 space-y-16 md:mt-20 md:space-y-20">
           {featuredProjects.map((project, index) => (
             <Reveal key={project.id} x={index % 2 === 0 ? -40 : 40} y={0}>
-              <ProjectCard project={project} index={index} />
+              <ProjectCard project={project} />
             </Reveal>
           ))}
         </div>

@@ -2,7 +2,9 @@ import {
   FaGithub,
   FaInstagram,
   FaLinkedinIn,
+  FaTiktok,
   FaXTwitter,
+  FaYoutube,
 } from "react-icons/fa6";
 
 export type FeaturedProject = {
@@ -60,6 +62,27 @@ export const featuredProjects: FeaturedProject[] = [
     ],
     liveUrl: "https://admin-devtrend.vercel.app",
     githubUrl: "https://github.com/ahmed-dev-reda/admin",
+    featured: true,
+  },
+
+  {
+    id: "store",
+    title: "Store — E-commerce Platform",
+    description:
+      "A modern e-commerce platform designed for shopping across multiple product categories, featuring product browsing, detailed product pages, shopping cart management, and a seamless user experience.",
+    category: "Featured Project",
+    year: "2026",
+    role: "Frontend Developer",
+    image: "/projects_images/store.png",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Redux Toolkit",
+    ],
+    liveUrl: "https://store-devtrend.vercel.app",
+    githubUrl: "#",
     featured: true,
   },
 
@@ -144,13 +167,18 @@ export const socials = [
     url: portfolio.socials.github,
   },
   {
-    label: "X",
-    icon: FaXTwitter,
-    url: "#",
+    label: "Tik Tok",
+    icon: FaTiktok,
+    url: "https://www.tiktok.com/@ahmed.dev.reda",
   },
   {
     label: "Instagram",
     icon: FaInstagram,
-    url: "#",
+    url: "https://www.instagram.com/ahmed.dev.reda",
+  },
+  {
+    label: "Youtube",
+    icon: FaYoutube,
+    url: "https://www.youtube.com/@ahmed-dev-reda",
   },
 ];

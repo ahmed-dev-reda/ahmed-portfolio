@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useActionState } from "react";
 import { toast } from "sonner";
 
@@ -9,7 +9,7 @@ import { sendContactMessage } from "@/app/actions/contact";
 import Reveal from "@/components/sections/reveal";
 
 const inputClasses =
-  "w-full rounded-md border border-[#484848] bg-card/50 px-4 py-3 text-sm text-white outline-none backdrop-blur-md transition placeholder:text-secondary focus:border-lime focus:bg-card/70";
+  "w-full rounded-md border border-[#484848] bg-card/50 px-4 py-3 text-sm text-foreground outline-none backdrop-blur-md transition placeholder:text-secondary focus:border-lime focus:bg-card/70";
 
 const initialContactState = { success: false, message: null as string | null };
 
@@ -41,16 +41,15 @@ export default function Contact() {
     toast.error("Message not sent", {
       description: state.message,
     });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
   return (
-    <footer id="contact">
+    <footer id="contact" className="scroll-mt-24">
       <div className="mx-auto grid max-w-[1200px] gap-10 px-6 py-16 sm:px-10 md:py-20 lg:grid-cols-2 lg:gap-16 lg:px-[3%] lg:py-24">
         {/* Intro */}
         <Reveal x={-40} y={0}>
           <div className="flex h-full flex-col">
-            <h2 className="display-heading text-4xl text-white sm:text-5xl md:text-6xl">
+            <h2 className="display-heading text-4xl text-foreground sm:text-5xl md:text-6xl">
               Let&apos;s connect
             </h2>
 
@@ -58,7 +57,7 @@ export default function Contact() {
               Say hello at{" "}
               <a
                 href={`mailto:${portfolio.email}`}
-                className="text-white underline underline-offset-4 hover:text-lime"
+                className="text-foreground underline underline-offset-4 hover:text-lime-text"
               >
                 {portfolio.email}
               </a>
@@ -69,7 +68,7 @@ export default function Contact() {
               <a
                 href={portfolio.resume}
                 download
-                className="text-white underline underline-offset-4 hover:text-lime"
+                className="text-foreground underline underline-offset-4 hover:text-lime-text"
               >
                 resume
               </a>
@@ -83,7 +82,7 @@ export default function Contact() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label={social.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-lime transition hover:bg-lime hover:text-[#1a2a00]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-lime-text transition hover:bg-lime hover:text-[#1a2a00]"
                 >
                   <social.icon size={16} />
                 </a>

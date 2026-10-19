@@ -1,15 +1,18 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
 import DataRain from "@/components/ui/data-rain";
 
 /**
  * Fixed full-viewport DataRain background.
  * Invisible over the hero (which has its own GlassFold) and fades in
- * behind every section scrolled after it.
+ * behind every section scrolled after it. Palette follows the theme.
  */
 export default function DataRainBg() {
   const [visible, setVisible] = useState(false);
+  const { resolvedTheme } = useTheme();
+  const isDark = (resolvedTheme ?? "dark") === "dark";
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > 500);
@@ -28,11 +31,19 @@ export default function DataRainBg() {
       <DataRain
         className="absolute inset-0"
         fullscreen={true}
-        palette={{
-          calm: "#d3e97a",
-          mid: "#8ba53a",
-          hot: "#f4ffd6",
-        }}
+        palette={
+          isDark
+            ? {
+                calm: "#d3e97a",
+                mid: "#8ba53a",
+                hot: "#f4ffd6",
+              }
+            : {
+                calm: "#7aa019",
+                mid: "#9db54d",
+                hot: "#4a621b",
+              }
+        }
         flowSpeed={0.8}
       />
       {/* keep a scrim so content keeps its contrast */}

@@ -4,22 +4,14 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { portfolio } from "@/components/data";
 import Reveal from "@/components/sections/reveal";
-import { GlassFold } from "@/components/ui/glass-fold";
+import HeroSilk from "@/components/sections/hero-silk";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Animated glass-fold background, tuned to the site palette */}
-      <div className="absolute inset-0 opacity-35" aria-hidden>
-        <GlassFold
-          color1="#4a621b"
-          color2="#0a0a0a"
-          color3="#d3e97a"
-          speed={0.4}
-          scale={1}
-          noise={0.15}
-          className="absolute inset-0"
-        />
+      {/* Animated silk-flow background, tuned to the site palette */}
+      <div className="absolute inset-0 opacity-40" aria-hidden>
+        <HeroSilk />
       </div>
       {/* Fade the edges out so the shader blends into the page background */}
       <div
@@ -31,7 +23,7 @@ export default function Hero() {
         {/* Text */}
         <div className="order-2 lg:order-1">
           <Reveal>
-            <h1 className="display-heading text-5xl leading-[1.05] text-white sm:text-6xl md:text-7xl">
+            <h1 className="display-heading text-5xl leading-[1.05] text-foreground sm:text-6xl md:text-7xl">
               Hi, I am
               <br />
               {portfolio.name}.
@@ -56,7 +48,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="LinkedIn"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-white transition hover:bg-lime hover:text-[#1a2a00]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-foreground transition hover:bg-lime hover:text-[#1a2a00]"
                 >
                   <FaLinkedinIn size={16} />
                 </a>
@@ -65,7 +57,7 @@ export default function Hero() {
                   target="_blank"
                   rel="noreferrer"
                   aria-label="GitHub"
-                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-white transition hover:bg-lime hover:text-[#1a2a00]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-card text-foreground transition hover:bg-lime hover:text-[#1a2a00]"
                 >
                   <FaGithub size={16} />
                 </a>

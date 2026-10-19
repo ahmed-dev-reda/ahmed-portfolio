@@ -5,6 +5,7 @@ import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import { portfolio } from "@/components/data";
+import ThemeToggle from "@/components/sections/theme-toggle";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -53,13 +54,13 @@ export default function Header() {
       <div
         className={`mx-auto flex items-center justify-between transition-all duration-300 ${
           scrolled
-            ? "max-w-[1200px] rounded-full border border-[#484848] bg-[#0a0a0a]/60 px-5 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:px-6"
+            ? "max-w-[1200px] rounded-full border border-border bg-background/70 px-5 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:px-6"
             : "max-w-[1200px] bg-transparent px-6 py-5 sm:px-10 lg:px-[3%]"
         }`}
       >
         <Link
           href="/"
-          className={`display-heading text-white transition-all duration-300 ${
+          className={`display-heading text-foreground transition-all duration-300 ${
             scrolled ? "text-xl" : "text-lg sm:text-3xl"
           }`}
           onClick={() => setOpen(false)}
@@ -72,19 +73,21 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-semibold uppercase tracking-wide text-white transition hover:text-lime"
+              className="text-xs font-semibold uppercase tracking-wide text-foreground transition hover:text-lime-text"
             >
               {link.label}
             </a>
           ))}
         </nav>
 
+        <ThemeToggle />
+
         <button
           type="button"
           aria-label={open ? "Close menu" : "Open menu"}
           aria-expanded={open}
           onClick={() => setOpen((value) => !value)}
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-card text-white transition-colors duration-200 hover:bg-lime hover:text-[#1a2a00] sm:hidden"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-card text-foreground transition-colors duration-200 hover:bg-lime hover:text-[#1a2a00] sm:hidden"
         >
           <AnimatePresence mode="wait" initial={false}>
             <motion.span
@@ -114,7 +117,7 @@ export default function Header() {
               className="mt-2 overflow-hidden"
               aria-label="Mobile navigation"
             >
-              <div className="flex flex-col rounded-2xl border border-[#484848] bg-[#0a0a0a]/95 px-5 py-3 shadow-lg shadow-black/40 backdrop-blur">
+              <div className="flex flex-col rounded-2xl border border-border bg-background/95 px-5 py-3 shadow-lg shadow-black/40 backdrop-blur">
                 {links.map((link, index) => (
                   <motion.a
                     key={link.href}
@@ -122,7 +125,7 @@ export default function Header() {
                     onClick={() => setOpen(false)}
                     variants={linkVariants}
                     custom={index}
-                    className="border-b border-[#222222] py-3 text-sm font-semibold uppercase tracking-wide text-white transition hover:text-lime last:border-b-0"
+                    className="border-b border-[#222222] py-3 text-sm font-semibold uppercase tracking-wide text-foreground transition hover:text-lime-text last:border-b-0"
                   >
                     {link.label}
                   </motion.a>
