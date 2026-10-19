@@ -169,7 +169,7 @@ export default function Header() {
 
         {/* toggles in the bar are desktop-only; on mobile they live
             inside the full-screen menu */}
-        <div className="hidden items-center sm:flex">
+        <div className="hidden items-center sm:flex gap-4">
           <LanguageToggle />
           <ThemeToggle />
         </div>
