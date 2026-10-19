@@ -14,24 +14,36 @@ const links = [
 ];
 
 const menuVariants = {
-  hidden: { opacity: 0, height: 0, y: -8 },
+  hidden: { opacity: 0, y: -24 },
   visible: {
     opacity: 1,
-    height: "auto",
     y: 0,
-    transition: { duration: 0.28, ease: "easeOut" as const },
+    transition: { duration: 0.3, ease: "easeOut" as const },
   },
-  exit: { opacity: 0, height: 0, y: -8, transition: { duration: 0.2, ease: "easeIn" as const } },
+  exit: { opacity: 0, y: -24, transition: { duration: 0.2, ease: "easeIn" as const } },
 };
 
 const linkVariants = {
-  hidden: { opacity: 0, x: -16 },
+  hidden: { opacity: 0, y: 18 },
   visible: (index: number) => ({
     opacity: 1,
-    x: 0,
-    transition: { delay: 0.1 + index * 0.07, duration: 0.3, ease: "easeOut" as const },
+    y: 0,
+    transition: {
+      delay: 0.12 + index * 0.08,
+      duration: 0.35,
+      ease: "easeOut" as const,
+    },
   }),
-  exit: { opacity: 0, x: -12, transition: { duration: 0.12 } },
+  exit: { opacity: 0, y: 12, transition: { duration: 0.12 } },
+};
+
+const footerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { delay: 0.45, duration: 0.3 },
+  },
+  exit: { opacity: 0, transition: { duration: 0.1 } },
 };
 
 export default function Header() {
@@ -45,14 +57,67 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // lock page scroll while the full-screen menu is open
+  useEffect(() => {
+    if (!open) return;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header
       className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
         scrolled ? "px-4 top-4" : ""
       }`}
     >
+      {/* Full-screen mobile menu (small screens only) */}
+      <div className="sm:hidden">
+        <AnimatePresence>
+          {open && (
+            <motion.div
+              key="mobile-menu"
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="fixed inset-0 z-[1] flex h-dvh flex-col bg-background/95 px-6 pb-10 pt-24 backdrop-blur-md"
+              aria-label="Mobile navigation"
+            >
+              <nav className="flex flex-1 flex-col justify-center">
+                {links.map((link, index) => (
+                  <motion.a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setOpen(false)}
+                    variants={linkVariants}
+                    custom={index}
+                    className="display-heading border-b border-border py-5 text-4xl text-foreground transition-colors last:border-b-0 hover:text-lime-text"
+                  >
+                    {link.label}
+                  </motion.a>
+                ))}
+              </nav>
+
+              <motion.div
+                variants={footerVariants}
+                className="mt-auto flex items-center justify-center gap-4 border-t border-border pt-6"
+              >
+                <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
+                  Theme
+                </span>
+                <ThemeToggle />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* Top bar — must stay above the full-screen menu so the logo and
+          close button remain reachable */}
       <div
-        className={`mx-auto flex items-center justify-between transition-all duration-300 ${
+        className={`relative z-[2] mx-auto flex items-center justify-between transition-all duration-300 ${
           scrolled
             ? "max-w-[1200px] rounded-full border border-border bg-background/70 px-5 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:px-6"
             : "max-w-[1200px] bg-transparent px-6 py-5 sm:px-10 lg:px-[3%]"
@@ -80,7 +145,11 @@ export default function Header() {
           ))}
         </nav>
 
-        <ThemeToggle />
+        {/* theme toggle in the bar is desktop-only; on mobile it lives
+            inside the full-screen menu */}
+        <div className="hidden sm:block">
+          <ThemeToggle />
+        </div>
 
         <button
           type="button"
