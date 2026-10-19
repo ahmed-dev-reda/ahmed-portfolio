@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 
 import "./globals.css";
-import { Anton, Inter } from "next/font/google";
+import { Anton, Cairo, Inter } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Header from "@/components/sections/header";
 import AppToaster from "@/components/providers/toaster";
+import { I18nProvider } from "@/components/providers/i18n";
 
 const anton = Anton({
   subsets: ["latin"],
@@ -13,6 +14,11 @@ const anton = Anton({
 });
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+const cairo = Cairo({
+  subsets: ["arabic", "latin"],
+  variable: "--font-cairo",
+});
 
 const siteUrl = "https://ahmed-reda-dev.vercel.app";
 
@@ -108,9 +114,11 @@ export default function RootLayout({
     <html
       suppressHydrationWarning
       className="dark"
+      lang="en"
+      dir="ltr"
     >
       <body
-        className={`${anton.variable} ${inter.variable} min-h-full bg-background font-body text-foreground antialiased`}
+        className={`${anton.variable} ${inter.variable} ${cairo.variable} min-h-full bg-background font-body text-foreground antialiased`}
       >
         <ThemeProvider
           attribute="class"
@@ -118,9 +126,11 @@ export default function RootLayout({
           enableSystem={false}
           themes={["dark", "light"]}
         >
-          <Header />
-          {children}
-          <AppToaster />
+          <I18nProvider>
+            <Header />
+            {children}
+            <AppToaster />
+          </I18nProvider>
         </ThemeProvider>
       </body>
     </html>

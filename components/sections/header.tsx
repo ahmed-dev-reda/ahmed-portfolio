@@ -6,6 +6,8 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FiMenu, FiX } from "react-icons/fi";
 import { portfolio } from "@/components/data";
 import ThemeToggle from "@/components/sections/theme-toggle";
+import LanguageToggle from "@/components/sections/language-toggle";
+import { useI18n } from "@/components/providers/i18n";
 
 const links = [
   { label: "Work", href: "#work" },
@@ -20,7 +22,11 @@ const menuVariants = {
     y: 0,
     transition: { duration: 0.3, ease: "easeOut" as const },
   },
-  exit: { opacity: 0, y: -24, transition: { duration: 0.2, ease: "easeIn" as const } },
+  exit: {
+    opacity: 0,
+    y: -24,
+    transition: { duration: 0.2, ease: "easeIn" as const },
+  },
 };
 
 const linkVariants = {
@@ -49,6 +55,7 @@ const footerVariants = {
 export default function Header() {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t, locale } = useI18n();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -56,6 +63,13 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  const links = [
+    { label: t("nav_work"), href: "#work" },
+    { label: t("nav_about"), href: "#about" },
+    { label: t("nav_contact"), href: "#contact" },
+  ];
+  const displayName = locale === "ar" ? portfolio.nameAr : portfolio.name;
 
   // lock page scroll while the full-screen menu is open
   useEffect(() => {
@@ -102,12 +116,20 @@ export default function Header() {
 
               <motion.div
                 variants={footerVariants}
-                className="mt-auto flex items-center justify-center gap-4 border-t border-border pt-6"
+                className="mt-auto flex items-center justify-center gap-10 border-t border-border pt-6"
               >
-                <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
-                  Theme
-                </span>
-                <ThemeToggle />
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
+                    {t("theme_label")}
+                  </span>
+                  <ThemeToggle />
+                </div>
+                <div className="flex items-center gap-3">
+                  <span className="text-xs font-semibold uppercase tracking-widest text-secondary">
+                    {t("language_label")}
+                  </span>
+                  <LanguageToggle />
+                </div>
               </motion.div>
             </motion.div>
           )}
@@ -119,7 +141,7 @@ export default function Header() {
       <div
         className={`relative z-[2] mx-auto flex items-center justify-between transition-all duration-300 ${
           scrolled
-            ? "max-w-[1200px] rounded-full border border-border bg-background/70 px-5 py-2.5 shadow-lg shadow-black/40 backdrop-blur-md sm:px-6"
+            ? "max-w-[1200px] rounded-full border border-border bg-background/70 px-5 py-2.5 shadow-md shadow-black/40 backdrop-blur-md sm:px-6"
             : "max-w-[1200px] bg-transparent px-6 py-5 sm:px-10 lg:px-[3%]"
         }`}
       >
@@ -130,7 +152,7 @@ export default function Header() {
           }`}
           onClick={() => setOpen(false)}
         >
-          {portfolio.name}
+          {displayName}
         </Link>
 
         <nav className="hidden items-center gap-8 sm:flex">
@@ -145,9 +167,10 @@ export default function Header() {
           ))}
         </nav>
 
-        {/* theme toggle in the bar is desktop-only; on mobile it lives
+        {/* toggles in the bar are desktop-only; on mobile they live
             inside the full-screen menu */}
-        <div className="hidden sm:block">
+        <div className="hidden items-center sm:flex">
+          <LanguageToggle />
           <ThemeToggle />
         </div>
 

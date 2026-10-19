@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { FaArrowDownLong } from "react-icons/fa6";
@@ -5,8 +7,13 @@ import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { portfolio } from "@/components/data";
 import Reveal from "@/components/sections/reveal";
 import HeroPattern from "@/components/sections/hero-pattern";
+import { useI18n } from "@/components/providers/i18n";
 
 export default function Hero() {
+  const { t, locale } = useI18n();
+  const name = locale === "ar" ? portfolio.nameAr : portfolio.name;
+  const intro =
+    locale === "ar" ? (portfolio.introAr ?? portfolio.intro) : portfolio.intro;
   return (
     <section className="relative overflow-hidden">
       {/* Elegant dark pattern backdrop, tuned to the site palette */}
@@ -24,13 +31,13 @@ export default function Hero() {
         <div className="order-2 lg:order-1">
           <Reveal>
             <h1 className="display-heading text-5xl leading-[1.05] text-foreground sm:text-6xl md:text-7xl">
-              Hi, I am
+              {t("hero_hi")}
               <br />
-              {portfolio.name}.
+              {name}.
             </h1>
 
             <p className="mt-6 max-w-md text-sm text-secondary sm:text-base">
-              {portfolio.intro}
+              {intro}
             </p>
 
             <div className="mt-8 flex items-center gap-4 sm:gap-5">
@@ -38,7 +45,7 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex items-center gap-3 rounded-full bg-lime px-6 py-3 text-[11px] font-bold uppercase tracking-widest text-[#1a2a00] transition hover:bg-lime-hover"
               >
-                Contact me
+                {t("hero_cta")}
                 <FaArrowDownLong className="size-3.5" aria-hidden />
               </Link>
 

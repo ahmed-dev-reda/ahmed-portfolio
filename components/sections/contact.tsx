@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import { portfolio, socials } from "@/components/data";
 import { sendContactMessage } from "@/app/actions/contact";
 import Reveal from "@/components/sections/reveal";
+import { useI18n } from "@/components/providers/i18n";
 
 const inputClasses =
   "w-full rounded-md border border-[#484848] bg-card/50 px-4 py-3 text-sm text-foreground outline-none backdrop-blur-md transition placeholder:text-secondary focus:border-lime focus:bg-card/70";
@@ -14,6 +15,7 @@ const inputClasses =
 const initialContactState = { success: false, message: null as string | null };
 
 export default function Contact() {
+  const { t } = useI18n();
   const [state, formAction, pending] = useActionState(
     sendContactMessage,
     initialContactState,
@@ -32,16 +34,16 @@ export default function Contact() {
     if (state.message === null) return; // initial state, nothing sent yet
 
     if (state.success) {
-      toast.success("Message sent 🎉", {
-        description: "Thanks for reaching out — I'll get back to you soon.",
+      toast.success(t("toast_success"), {
+        description: t("toast_success_desc"),
       });
       return;
     }
 
-    toast.error("Message not sent", {
+    toast.error(t("toast_error"), {
       description: state.message,
     });
-  }, [state]);
+  }, [state, t]);
 
   return (
     <footer id="contact" className="scroll-mt-24">
@@ -50,11 +52,11 @@ export default function Contact() {
         <Reveal x={-40} y={0}>
           <div className="flex h-full flex-col">
             <h2 className="display-heading text-4xl text-foreground sm:text-5xl md:text-6xl">
-              Let&apos;s connect
+              {t("contact_heading")}
             </h2>
 
             <p className="mt-5 text-sm text-secondary">
-              Say hello at{" "}
+              {t("contact_hello")}{" "}
               <a
                 href={`mailto:${portfolio.email}`}
                 className="text-foreground underline underline-offset-4 hover:text-lime-text"
@@ -64,13 +66,13 @@ export default function Contact() {
             </p>
 
             <p className="mt-2 text-sm text-secondary">
-              For more info, here&apos;s my{" "}
+              {t("contact_resume_pre")}{" "}
               <a
                 href={portfolio.resume}
                 download
                 className="text-foreground underline underline-offset-4 hover:text-lime-text"
               >
-                resume
+                {t("contact_resume")}
               </a>
             </p>
 
@@ -107,14 +109,14 @@ export default function Contact() {
                 htmlFor="name"
                 className="mb-2 block text-xs text-secondary"
               >
-                Name
+                {t("form_name")}
               </label>
               <input
                 id="name"
                 name="name"
                 required
                 autoComplete="name"
-                placeholder="John Doe"
+                placeholder={t("form_name_placeholder")}
                 className={inputClasses}
               />
             </div>
@@ -124,7 +126,7 @@ export default function Contact() {
                 htmlFor="email"
                 className="mb-2 block text-xs text-secondary"
               >
-                Email
+                {t("form_email")}
               </label>
               <input
                 id="email"
@@ -141,7 +143,7 @@ export default function Contact() {
                 htmlFor="subject"
                 className="mb-2 block text-xs text-secondary"
               >
-                Subject
+                {t("form_subject")}
               </label>
               <input
                 id="subject"
@@ -156,7 +158,7 @@ export default function Contact() {
                 htmlFor="message"
                 className="mb-2 block text-xs text-secondary"
               >
-                Message
+                {t("form_message")}
               </label>
               <textarea
                 id="message"
@@ -172,7 +174,7 @@ export default function Contact() {
               disabled={pending}
               className="rounded-full bg-lime px-7 py-3 text-[11px] font-bold uppercase tracking-widest text-[#1a2a00] transition hover:bg-lime-hover disabled:cursor-wait disabled:opacity-60"
             >
-              {pending ? "Sending..." : "Submit"}
+              {pending ? t("form_sending") : t("form_submit")}
             </button>
           </form>
         </Reveal>

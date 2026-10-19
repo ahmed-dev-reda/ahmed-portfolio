@@ -11,6 +11,8 @@ export type FeaturedProject = {
   id: string;
   title: string;
   description: string;
+  /** Arabic description (project titles always stay English). */
+  descriptionAr?: string;
   category?: string;
   year: string;
   role: string;
@@ -27,6 +29,8 @@ export const featuredProjects: FeaturedProject[] = [
     title: "MY ATS CV — ATS Resume Builder",
     description:
       "A modern CV builder that helps users create, customize, preview, and export professional ATS-friendly resumes as PDF files.",
+    descriptionAr:
+      "أداة حديثة لإنشاء السيرة الذاتية تساعد المستخدمين على إنشاء وتعديل ومعاينة وتصدير سِيَر ذاتية متوافقة مع أنظمة ATS كملفات PDF.",
     category: "Featured Project",
     year: "2026",
     role: "Full Stack Developer",
@@ -50,6 +54,8 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Admin Dashboard",
     description:
       "A modern admin dashboard featuring a clean interface, responsive layouts, and reusable UI components for efficient data management.",
+    descriptionAr:
+      "لوحة تحكم حديثة بواجهة نظيفة وتخطيطات متجاوبة ومكونات قابلة لإعادة الاستخدام لإدارة البيانات بكفاءة.",
     year: "2026",
     role: "Frontend Developer",
     image: "/projects_images/admin.png",
@@ -70,6 +76,8 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Store — E-commerce Platform",
     description:
       "A modern e-commerce platform designed for shopping across multiple product categories, featuring product browsing, detailed product pages, shopping cart management, and a seamless user experience.",
+    descriptionAr:
+      "منصة تجارة إلكترونية حديثة للتسوق عبر عدة فئات من المنتجات، مع تصفح المنتجات وصفحات تفصيلية وإدارة سلة الشراء وتجربة استخدام سلسة.",
     category: "Featured Project",
     year: "2026",
     role: "Frontend Developer",
@@ -91,6 +99,8 @@ export const featuredProjects: FeaturedProject[] = [
     title: "Video Downloader",
     description:
       "A web-based video downloading application with an API-driven download workflow and a simple user interface.",
+    descriptionAr:
+      "تطبيق ويب لتنزيل الفيديوهات بواجهة بسيطة وسير عمل تنزيل يعتمد على API.",
     year: "2026",
     role: "Frontend Developer",
     image: "/projects_images/video-downloader.png",
@@ -103,15 +113,21 @@ export const featuredProjects: FeaturedProject[] = [
 
 export const portfolio = {
   name: "Ahmed Reda",
+  /** Arabic display name (used when the site's locale is Arabic). */
+  nameAr: "أحمد رضا",
   role: "Frontend Developer",
   location: "Egypt",
   email: "ahmed.dev.reda@gmail.com",
 
   intro:
     "I'm a Frontend Developer from Egypt passionate about building modern, responsive, and user-friendly web experiences.",
+  introAr:
+    "أنا مطوّر واجهات أمامية من مصر، شغوف ببناء تجارب ويب حديثة ومتجاوبة وسهلة الاستخدام.",
 
   about:
     "I'm Ahmed Reda, a Frontend Developer focused on React, Next.js, TypeScript, and Tailwind CSS. I enjoy turning ideas into real products, solving problems, and building accessible and high-performance interfaces. I continuously improve my skills by building practical projects and exploring modern web technologies.",
+  aboutAr:
+    "أنا أحمد رضا، مطوّر واجهات أمامية مركّز على React و Next.js و TypeScript و Tailwind CSS. أحب تحويل الأفكار إلى منتجات حقيقية، وحل المشكلات، وبناء واجهات عالية الأداء ومتاحة للجميع. وأطوّر مهاراتي باستمرار عبر بناء مشاريع عملية واستكشاف تقنيات الويب الحديثة.",
 
   profileImage: "/profile.jpg",
   resume: "/files/resume.pdf",

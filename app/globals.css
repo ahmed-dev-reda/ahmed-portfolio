@@ -118,8 +118,23 @@
   }
 }
 
-[dir="rtl"] body {
-  font-family: var(--font-arabic);
+/* ── Arabic (RTL) ──────────────────────────────────────────────────────────── */
+/* Cairo takes over both the body and the display font; Anton has no Arabic
+   glyphs, and wide tracking is meaningless on Arabic script. */
+/* next/font defines --font-anton / --font-inter on <body>, so the Arabic
+   override must also target <body> to win the cascade */
+html[lang="ar"] body {
+  --font-anton: var(--font-cairo), "Cairo", sans-serif;
+  --font-inter: var(--font-cairo), "Cairo", sans-serif;
+}
+html[lang="ar"] *,
+html[lang="ar"] *::before,
+html[lang="ar"] *::after {
+  letter-spacing: normal;
+}
+html[lang="ar"] .display-heading {
+  font-weight: 700;
+  letter-spacing: normal;
 }
 
 @layer utilities {
