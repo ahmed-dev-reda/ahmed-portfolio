@@ -4,14 +4,14 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { portfolio } from "@/components/data";
 import Reveal from "@/components/sections/reveal";
-import HeroSilk from "@/components/sections/hero-silk";
+import HeroPattern from "@/components/sections/hero-pattern";
 
 export default function Hero() {
   return (
     <section className="relative overflow-hidden">
-      {/* Animated silk-flow background, tuned to the site palette */}
-      <div className="absolute inset-0 opacity-40" aria-hidden>
-        <HeroSilk />
+      {/* Elegant dark pattern backdrop, tuned to the site palette */}
+      <div className="absolute inset-0" aria-hidden>
+        <HeroPattern />
       </div>
       {/* Fade the edges out so the shader blends into the page background */}
       <div
