@@ -47,6 +47,12 @@ export default function ProjectImage({
           className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
 
+        {/* Theme duotone wash — recolours the shot in the site's lime on hover */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 bg-lime mix-blend-color opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-80"
+        />
+
         {/* Zoom hint */}
         <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/30 group-hover:opacity-100">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime text-[#1a2a00]">
