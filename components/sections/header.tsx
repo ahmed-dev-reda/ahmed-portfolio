@@ -9,11 +9,6 @@ import ThemeToggle from "@/components/sections/theme-toggle";
 import LanguageToggle from "@/components/sections/language-toggle";
 import { useI18n } from "@/components/providers/i18n";
 
-const links = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
 
 const menuVariants = {
   hidden: { opacity: 0, y: -24 },

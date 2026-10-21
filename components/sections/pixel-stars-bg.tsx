@@ -2,15 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
-import KineticGrid from "@/components/ui/kinetic-grid";
+import BackgroundPixelStars from "@/components/ui/background-pixel-stars";
 
 /**
- * Fixed full-viewport KineticGrid background.
- * Invisible over the hero (which has its own silk backdrop), fades in after
- * scrolling past it, and is only rendered in dark mode — in light mode the
- * page below the hero is left plain.
+ * Fixed full-viewport pixel-starfield background.
+ * Invisible over the hero, fades in after scrolling past it, and — like all
+ * post-hero effects — is only rendered in dark mode.
  */
-export default function KineticGridBg() {
+export default function PixelStarsBg() {
   const [visible, setVisible] = useState(false);
   const { resolvedTheme } = useTheme();
   const isDark = (resolvedTheme ?? "dark") === "dark";
@@ -28,11 +27,11 @@ export default function KineticGridBg() {
   return (
     <div
       aria-hidden
-      className={`fixed inset-0 z-0 transition-opacity duration-700 ease-out ${
+      className={`pointer-events-none fixed inset-0 z-0 transition-opacity duration-700 ease-out ${
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <KineticGrid className="absolute inset-0 h-full" />
+      <BackgroundPixelStars />
     </div>
   );
 }
