@@ -9,12 +9,6 @@ import ThemeToggle from "@/components/sections/theme-toggle";
 import LanguageToggle from "@/components/sections/language-toggle";
 import { useI18n } from "@/components/providers/i18n";
 
-const links = [
-  { label: "Work", href: "#work" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
-];
-
 const menuVariants = {
   hidden: { opacity: 0, y: -24 },
   visible: {
@@ -145,15 +139,15 @@ export default function Header() {
             : "max-w-[1200px] bg-transparent px-6 py-5 sm:px-10 lg:px-[3%]"
         }`}
       >
-        <Link
-          href="/"
+        <a
+          href="#"
           className={`display-heading text-foreground transition-all duration-300 ${
             scrolled ? "text-xl" : "text-lg sm:text-3xl"
           }`}
           onClick={() => setOpen(false)}
         >
           {displayName}
-        </Link>
+        </a>
 
         <nav className="hidden items-center gap-8 sm:flex">
           {links.map((link) => (

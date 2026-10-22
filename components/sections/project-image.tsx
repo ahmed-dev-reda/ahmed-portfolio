@@ -5,7 +5,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiX, FiZoomIn } from "react-icons/fi";
 import type { FeaturedProject } from "@/components/data";
-import { ProjectLinks } from "./projects";
+import { FaArrowUpRightFromSquare, FaGithub } from "react-icons/fa6";
 
 export default function ProjectImage({
   project,
@@ -43,7 +43,7 @@ export default function ProjectImage({
           src={project.image}
           alt={`${project.title} preview`}
           fill
-          sizes="(min-width: 768px) 40vw, 70vw"
+          sizes="(min-width: 768px) 40vw, 60vw"
           className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
 
@@ -69,7 +69,7 @@ export default function ProjectImage({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-[60] flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-10 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm sm:p-8"
             onClick={() => setOpen(false)}
             aria-modal="true"
             role="dialog"
@@ -79,7 +79,7 @@ export default function ProjectImage({
               type="button"
               aria-label="Close preview"
               onClick={() => setOpen(false)}
-              className="absolute right-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-full bg-card text-foreground transition hover:bg-lime hover:text-[#1a2a00] sm:right-8 sm:top-8"
+              className="absolute right-4 top-4 z-[99] flex h-10 w-10 items-center justify-center rounded-full bg-card text-foreground transition hover:bg-lime hover:text-[#1a2a00] sm:right-8 sm:top-8"
             >
               <FiX size={18} />
             </button>
@@ -94,7 +94,7 @@ export default function ProjectImage({
                 transition: { duration: 0.25, ease: "easeIn" },
               }}
               transition={{ type: "spring", stiffness: 220, damping: 27 }}
-              className="relative w-full max-w-7xl"
+              className="relative w-full max-w-4xl"
               onClick={(event) => event.stopPropagation()}
             >
               <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl ">
@@ -102,7 +102,7 @@ export default function ProjectImage({
                   src={project.image}
                   alt={`${project.title} full preview`}
                   fill
-                  sizes="100vw"
+                  sizes="80vw"
                   className="object-contain"
                   priority
                 />
@@ -111,7 +111,34 @@ export default function ProjectImage({
                 <span className="display-heading text-foreground">
                   {project.title}
                 </span>
-                <ProjectLinks project={project} />
+                <div className="flex flex-wrap items-center gap-6">
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className=""
+                    >
+                      <FaArrowUpRightFromSquare
+                        className="size-5 text-lime hover:text-white"
+                        aria-hidden
+                      />
+                    </a>
+                  )}
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                      className=""
+                    >
+                      <FaGithub
+                        className="size-6 text-lime hover:text-white"
+                        aria-hidden
+                      />
+                    </a>
+                  )}
+                </div>
               </figcaption>
             </motion.figure>
           </motion.div>
