@@ -43,19 +43,8 @@ export default function ProjectImage({
           src={project.image}
           alt={`${project.title} preview`}
           fill
-<<<<<<< HEAD
-          sizes="(min-width: 768px) 40vw, 60vw"
-          className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
-        />
-
-        {/* Theme duotone wash — recolours the shot in the site's lime on hover */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 bg-lime mix-blend-color opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-80"
-=======
           sizes="(min-width: 768px) 40vw, 70vw"
-          className="object-contain grayscale-100 opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 ease-out"
->>>>>>> 920d3a5699aebe7d2fa8e0f9c92dce214f439110
+          className="object-contain blur-[1px] group-hover:blur-none transition-all duration-500 ease-in-out"
         />
 
         {/* Zoom hint */}
@@ -74,7 +63,7 @@ export default function ProjectImage({
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-10 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm sm:p-8"
+            className="fixed inset-0 z-10 flex items-center justify-center bg-black/70 dark:bg-black/90 p-4 backdrop-blur-sm sm:p-8"
             onClick={() => setOpen(false)}
             aria-modal="true"
             role="dialog"
