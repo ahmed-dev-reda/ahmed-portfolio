@@ -43,6 +43,7 @@ export default function ProjectImage({
           src={project.image}
           alt={`${project.title} preview`}
           fill
+<<<<<<< HEAD
           sizes="(min-width: 768px) 40vw, 60vw"
           className="object-contain transition-transform duration-500 ease-out group-hover:scale-[1.02]"
         />
@@ -51,10 +52,14 @@ export default function ProjectImage({
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-lime mix-blend-color opacity-0 transition-opacity duration-500 ease-out group-hover:opacity-80"
+=======
+          sizes="(min-width: 768px) 40vw, 70vw"
+          className="object-contain grayscale-100 opacity-50 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-500 ease-out"
+>>>>>>> 920d3a5699aebe7d2fa8e0f9c92dce214f439110
         />
 
         {/* Zoom hint */}
-        <span className="absolute inset-0 flex items-center justify-center bg-black/0 opacity-0 transition-all duration-300 group-hover:bg-black/30 group-hover:opacity-100">
+        <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
           <span className="flex h-10 w-10 items-center justify-center rounded-full bg-lime text-[#1a2a00]">
             <FiZoomIn size={18} />
           </span>
@@ -108,7 +113,7 @@ export default function ProjectImage({
                 />
               </div>
               <figcaption className="flex justify-between items-center ">
-                <span className="display-heading text-foreground">
+                <span className="display-heading text-white">
                   {project.title}
                 </span>
                 <div className="flex flex-wrap items-center gap-6">

@@ -3,7 +3,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaTiktok,
-  FaXTwitter,
   FaYoutube,
 } from "react-icons/fa6";
 
@@ -38,8 +37,8 @@ export const featuredProjects: FeaturedProject[] = [
     technologies: [
       "Next.js",
       "React",
-      "TypeScript",
       "Prisma ORM",
+      "TypeScript",
       "Auth.js",
       "Tailwind CSS",
       "Redux Toolkit",
@@ -105,7 +104,7 @@ export const featuredProjects: FeaturedProject[] = [
     role: "Frontend Developer",
     image: "/projects_images/video-downloader.png",
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    liveUrl: "https://medo-dev-00s-projects-video-downloader.vercel.app/",
+    liveUrl: "https://ssdown.vercel.app",
     githubUrl: "https://github.com/ahmed-dev-reda/video-downloader",
     featured: true,
   },

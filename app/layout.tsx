@@ -111,12 +111,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      suppressHydrationWarning
-      className="dark"
-      lang="en"
-      dir="ltr"
-    >
+    <html suppressHydrationWarning className="dark" lang="en" dir="ltr">
       <body
         className={`${anton.variable} ${inter.variable} ${cairo.variable} min-h-full bg-background font-body text-foreground antialiased`}
       >

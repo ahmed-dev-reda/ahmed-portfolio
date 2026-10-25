@@ -9,6 +9,10 @@ import ThemeToggle from "@/components/sections/theme-toggle";
 import LanguageToggle from "@/components/sections/language-toggle";
 import { useI18n } from "@/components/providers/i18n";
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 920d3a5699aebe7d2fa8e0f9c92dce214f439110
 const menuVariants = {
   hidden: { opacity: 0, y: -24 },
   visible: {
