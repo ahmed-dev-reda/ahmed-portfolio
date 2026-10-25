@@ -18,10 +18,10 @@ function ProjectRow({ label, value }: { label: string; value: string }) {
 export function ProjectLinks({ project }: { project: FeaturedProject }) {
   const { t } = useI18n();
   const linkClasses =
-    "inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-lime-text underline underline-offset-4 transition hover:text-foreground";
+    "inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-widest text-lime-text underline underline-offset-4 transition hover:text-white dark:hover:text-foreground";
 
   return (
-    <div className="flex flex-wrap items-center gap-6">
+    <div className="flex items-center gap-6">
       {project.liveUrl && (
         <a
           href={project.liveUrl}
@@ -67,7 +67,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
 
       {/* Info */}
       <div className="flex flex-col justify-center">
-        <h3 className="display-heading text-2xl leading-tight text-foreground sm:text-3xl">
+        <h3 className="display-heading text-2xl leading-tight text-foreground sm:text-3xl ">
           {project.title}
         </h3>
 
@@ -82,7 +82,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
           {project.technologies.length > 0 && (
             <ProjectRow
               label={t("project_stack")}
-              value={project.technologies.slice(0, 5).join(", ")}
+              value={project.technologies.slice(0, 4).join(", ")}
             />
           )}
         </div>

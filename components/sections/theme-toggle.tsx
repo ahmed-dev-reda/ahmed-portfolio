@@ -59,21 +59,28 @@ export default function ThemeToggle() {
     );
 
     const transition = doc.startViewTransition(docChanged);
-    await transition.ready;
 
-    document.documentElement.animate(
-      {
-        clipPath: [
-          `circle(0px at ${x}px ${y}px)`,
-          `circle(${endRadius}px at ${x}px ${y}px)`,
-        ],
-      },
-      {
-        duration: 650,
-        easing: "ease-in-out",
-        pseudoElement: "::view-transition-new(root)",
-      },
-    );
+    // the theme applies regardless; only the reveal animation can be aborted
+    // (racing transitions or unsupported states throw on `ready`)
+    try {
+      await transition.ready;
+
+      document.documentElement.animate(
+        {
+          clipPath: [
+            `circle(0px at ${x}px ${y}px)`,
+            `circle(${endRadius}px at ${x}px ${y}px)`,
+          ],
+        },
+        {
+          duration: 650,
+          easing: "ease-in-out",
+          pseudoElement: "::view-transition-new(root)",
+        },
+      );
+    } catch {
+      // transition was aborted — the theme is already switched, nothing to do
+    }
   }
 
   return (

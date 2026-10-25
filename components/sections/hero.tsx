@@ -6,7 +6,6 @@ import { FaArrowDownLong } from "react-icons/fa6";
 import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
 import { portfolio } from "@/components/data";
 import Reveal from "@/components/sections/reveal";
-import HeroPattern from "@/components/sections/hero-pattern";
 import { useI18n } from "@/components/providers/i18n";
 
 export default function Hero() {
@@ -16,16 +15,6 @@ export default function Hero() {
     locale === "ar" ? (portfolio.introAr ?? portfolio.intro) : portfolio.intro;
   return (
     <section className="relative overflow-hidden">
-      {/* Elegant dark pattern backdrop, tuned to the site palette */}
-      <div className="absolute inset-0" aria-hidden>
-        <HeroPattern />
-      </div>
-      {/* Fade the edges out so the shader blends into the page background */}
-      <div
-        className="absolute inset-0 bg-gradient-to-b from-background/70 via-transparent to-background"
-        aria-hidden
-      />
-
       <div className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-10 px-6 py-16 sm:px-10 md:py-20 lg:grid-cols-2 lg:gap-16 lg:px-[3%] lg:py-24">
         {/* Text */}
         <div className="order-2 lg:order-1">
