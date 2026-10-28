@@ -102,7 +102,7 @@ export default function Contact() {
           <form
             ref={formRef}
             action={formAction}
-            className="space-y-5 rounded-2xl border border-[#484848]/60 bg-card/30 p-5 backdrop-blur-md sm:p-6"
+            className="space-y-5 rounded-2xl border border-[#484848]/60 bg-card/40 p-5 backdrop-blur-[4px] sm:p-6"
           >
             <div>
               <label
@@ -134,6 +134,7 @@ export default function Contact() {
                 type="email"
                 required
                 autoComplete="email"
+                placeholder={t("form_email_placeholder")}
                 className={inputClasses}
               />
             </div>
@@ -149,6 +150,7 @@ export default function Contact() {
                 id="subject"
                 name="subject"
                 required
+                placeholder={t("form_subject_placeholder")}
                 className={inputClasses}
               />
             </div>
@@ -165,6 +167,7 @@ export default function Contact() {
                 name="message"
                 rows={5}
                 required
+                placeholder={t("form_message_placeholder")}
                 className={`${inputClasses} resize-y`}
               />
             </div>

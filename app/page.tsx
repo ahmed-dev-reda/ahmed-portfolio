@@ -3,6 +3,7 @@ import Contact from "@/components/sections/contact";
 import PixelStarsBg from "@/components/sections/pixel-stars-bg";
 import Hero from "@/components/sections/hero";
 import Projects from "@/components/sections/projects";
+import Services from "@/components/sections/services";
 
 export default function RootPage() {
   return (
@@ -11,6 +12,7 @@ export default function RootPage() {
 
       <div className="relative z-10">
         <Hero />
+        <Services />
         <Projects />
         <AboutMe />
         <Contact />

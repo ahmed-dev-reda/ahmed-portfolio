@@ -17,7 +17,7 @@ export const dict = {
     nav_work: "Work",
     nav_about: "About",
     nav_contact: "Contact",
-    lang_label: "عربي", // what the toggle switches to
+    lang_label: "عربي",
     theme_label: "Theme",
     language_label: "Language",
     switch_to_light: "Switch to light theme",
@@ -26,6 +26,13 @@ export const dict = {
     // hero
     hero_hi: "Hi, I am",
     hero_cta: "Contact me",
+
+    // services
+    services_heading: "Services",
+    services_blurb:
+      "From pixel-perfect front-ends to scalable full stacks — the services I deliver to bring web projects to life.",
+    service_cta: "Get started",
+    nav_services: "Services",
 
     // projects
     projects_heading: "Featured Projects",
@@ -46,18 +53,25 @@ export const dict = {
     contact_hello: "Say hello at",
     contact_resume_pre: "For more info, here's my",
     contact_resume: "resume",
+
     form_name: "Name",
     form_email: "Email",
     form_subject: "Subject",
     form_message: "Message",
-    form_name_placeholder: "John Doe",
+
+    form_name_placeholder: "Enter your name",
+    form_email_placeholder: "Enter your email address",
+    form_subject_placeholder: "Enter the subject",
+    form_message_placeholder: "Write your message here...",
+
     form_submit: "Submit",
     form_sending: "Sending...",
+
     toast_success: "Message sent 🎉",
-    toast_success_desc:
-      "Thanks for reaching out — I'll get back to you soon.",
+    toast_success_desc: "Thanks for reaching out — I'll get back to you soon.",
     toast_error: "Message not sent",
   },
+
   ar: {
     // header
     nav_work: "أعمالي",
@@ -73,16 +87,24 @@ export const dict = {
     hero_hi: "أهلًا، أنا",
     hero_cta: "تواصل معي",
 
-    // projects (project names stay English)
+    // services
+    services_heading: "خدماتي",
+    services_blurb:
+      "من تصميم الواجهات الأمامية بدقة إلى بناء تطبيقات ويب متكاملة وقابلة للتوسع — أقدم خدمات تساعد على تحويل أفكار الويب إلى واقع.",
+    service_cta: "ابدأ الآن",
+    nav_services: "خدماتي",
+
+    // projects
+    // Project names stay English
     projects_heading: "مشاريع مميزة",
     projects_blurb:
-      "هذه بعض المشاريع المختارة التي تعرض شغفي بتطوير الواجهات الأمامية.",
+      "إليك بعض المشاريع المختارة التي تعكس شغفي بتطوير الواجهات الأمامية.",
     project_info: "معلومات المشروع",
     project_year: "السنة",
     project_role: "الدور",
     project_stack: "التقنيات",
     project_live: "عرض مباشر",
-    project_github: "الكود على GitHub",
+    project_github: "عرض الكود على GitHub",
 
     // about
     about_heading: "نبذة عني",
@@ -90,15 +112,22 @@ export const dict = {
     // contact
     contact_heading: "تواصل معي",
     contact_hello: "راسلني على",
-    contact_resume_pre: "لمزيد من المعلومات، هذه",
+    contact_resume_pre: "لمزيد من المعلومات، يمكنك الاطلاع على",
     contact_resume: "سيرتي الذاتية",
+
     form_name: "الاسم",
     form_email: "البريد الإلكتروني",
     form_subject: "الموضوع",
     form_message: "الرسالة",
+
     form_name_placeholder: "اكتب اسمك",
+    form_email_placeholder: "اكتب بريدك الإلكتروني",
+    form_subject_placeholder: "اكتب موضوع الرسالة",
+    form_message_placeholder: "اكتب رسالتك هنا...",
+
     form_submit: "إرسال",
     form_sending: "جارٍ الإرسال...",
+
     toast_success: "تم إرسال الرسالة 🎉",
     toast_success_desc: "شكرًا لتواصلك — سأرد عليك قريبًا.",
     toast_error: "لم يتم إرسال الرسالة",
@@ -129,6 +158,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
   // restore the saved locale once mounted (SSR always renders "en")
   useEffect(() => {
     const saved = window.localStorage.getItem(STORAGE_KEY);
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     if (saved === "ar" || saved === "en") setLocaleState(saved);
   }, []);
 
@@ -143,10 +173,7 @@ export function I18nProvider({ children }: { children: ReactNode }) {
     window.localStorage.setItem(STORAGE_KEY, next);
   }, []);
 
-  const t = useCallback(
-    (key: MessageKey) => dict[locale][key],
-    [locale],
-  );
+  const t = useCallback((key: MessageKey) => dict[locale][key], [locale]);
 
   return (
     <I18nContext.Provider

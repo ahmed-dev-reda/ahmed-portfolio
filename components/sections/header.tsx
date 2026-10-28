@@ -59,6 +59,7 @@ export default function Header() {
   }, []);
 
   const links = [
+    { label: t("nav_services"), href: "#services" },
     { label: t("nav_work"), href: "#work" },
     { label: t("nav_about"), href: "#about" },
     { label: t("nav_contact"), href: "#contact" },
@@ -154,7 +155,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="text-xs font-semibold uppercase tracking-wide text-foreground transition hover:text-lime-text"
+              className="text-sm font-semibold uppercase tracking-wide text-foreground transition hover:text-lime-text"
             >
               {link.label}
             </a>

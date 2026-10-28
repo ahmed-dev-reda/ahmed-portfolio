@@ -1,10 +1,17 @@
 import {
+  FaCode,
   FaGithub,
+  FaGaugeHigh,
   FaInstagram,
+  FaLayerGroup,
   FaLinkedinIn,
+  FaMobileScreenButton,
+  FaPlug,
   FaTiktok,
+  FaWrench,
   FaYoutube,
 } from "react-icons/fa6";
+import type { IconType } from "react-icons";
 
 export type FeaturedProject = {
   id: string;
@@ -107,6 +114,78 @@ export const featuredProjects: FeaturedProject[] = [
     liveUrl: "https://ssdown.vercel.app",
     githubUrl: "https://github.com/ahmed-dev-reda/video-downloader",
     featured: true,
+  },
+];
+
+export type Service = {
+  id: string;
+  title: string;
+  titleAr: string;
+  description: string;
+  descriptionAr: string;
+  icon: IconType;
+};
+
+export const services: Service[] = [
+  {
+    id: "front-end",
+    title: "Front-End Development",
+    titleAr: "تطوير واجهات المستخدم",
+    description:
+      "Pixel-perfect, accessible interfaces built with React, Next.js, and TypeScript — fast, reusable, and crafted to convert.",
+    descriptionAr:
+      "تطوير واجهات مستخدم احترافية وسريعة باستخدام React وNext.js وTypeScript، مع الاهتمام بدقة التصميم وسهولة الاستخدام وإمكانية إعادة استخدام المكونات.",
+    icon: FaCode,
+  },
+  {
+    id: "full-stack",
+    title: "Full-Stack Web Development",
+    titleAr: "تطوير مواقع الويب المتكاملة",
+    description:
+      "End-to-end web products with a polished front-end and a robust back-end — APIs, databases, auth, and deployment included.",
+    descriptionAr:
+      "تطوير مواقع وتطبيقات ويب متكاملة تشمل الواجهات الأمامية والخلفية، وربط قواعد البيانات وواجهات API، وتأمين تسجيل الدخول، وتجهيز المشروع للنشر.",
+    icon: FaLayerGroup,
+  },
+  {
+    id: "responsive",
+    title: "Responsive Web Design",
+    titleAr: "تصميم مواقع متجاوبة",
+    description:
+      "Layouts that adapt beautifully from large screens to small phones, with a mobile-first approach and fluid grids.",
+    descriptionAr:
+      "تصميم مواقع متجاوبة تعمل بكفاءة على جميع الأجهزة، من الشاشات الكبيرة إلى الهواتف المحمولة، مع تجربة استخدام سلسة وتصميم يبدأ من الموبايل.",
+    icon: FaMobileScreenButton,
+  },
+  {
+    id: "api",
+    title: "API Integration",
+    titleAr: "تكامل وربط واجهات API",
+    description:
+      "Clean integration of third-party and custom REST/GraphQL APIs into your product, with typed clients and smooth error handling.",
+    descriptionAr:
+      "ربط موقعك بواجهات API الخارجية أو المخصصة باستخدام REST وGraphQL، مع تنظيم البيانات ومعالجة الأخطاء لضمان تكامل سلس وموثوق.",
+    icon: FaPlug,
+  },
+  {
+    id: "performance",
+    title: "Website Performance Optimization",
+    titleAr: "تحسين أداء المواقع",
+    description:
+      "Speed audits, bundle tuning, caching strategies, and Core Web Vitals improvements to make your site load in a blink.",
+    descriptionAr:
+      "تحسين سرعة وأداء المواقع من خلال تحليل الأداء، وتقليل أحجام الملفات، وتحسين التخزين المؤقت، ورفع كفاءة مؤشرات Core Web Vitals لتوفير تجربة أسرع.",
+    icon: FaGaugeHigh,
+  },
+  {
+    id: "maintenance",
+    title: "Website Maintenance",
+    titleAr: "صيانة وتطوير المواقع",
+    description:
+      "Ongoing support, updates, security patches, and continuous improvements to keep your product healthy and evolving.",
+    descriptionAr:
+      "توفير الدعم الفني المستمر وتحديث الموقع وإصلاح المشكلات الأمنية والتقنية، مع تطويرات دورية للحفاظ على استقرار الموقع وتحسين أدائه.",
+    icon: FaWrench,
   },
 ];
 

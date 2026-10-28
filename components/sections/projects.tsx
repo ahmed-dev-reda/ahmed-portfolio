@@ -61,7 +61,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
       className="grid gap-8 rounded-2xl md:grid-cols-[1fr_1.1fr] md:gap-10"
     >
       {/* Preview card — transparent so the page background shows through */}
-      <div className="relative rounded-2xl p-4 transition-colors duration-300  sm:p-6">
+      <div className="relative rounded-2xl p-4 transition-colors duration-300 sm:p-0">
         <ProjectImage project={project} />
       </div>
 

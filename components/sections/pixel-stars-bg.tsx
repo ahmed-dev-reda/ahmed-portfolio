@@ -25,7 +25,7 @@ export default function PixelStarsBg() {
         visible ? "opacity-100" : "opacity-0"
       }`}
     >
-      <BackgroundPixelStars />
+      <BackgroundPixelStars  />
     </div>
   );
 }

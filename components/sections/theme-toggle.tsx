@@ -33,9 +33,7 @@ export default function ThemeToggle() {
     ).matches;
 
     type DocWithVT = Document & {
-      startViewTransition?: (
-        update?: () => void | Promise<void>,
-      ) => {
+      startViewTransition?: (update?: () => void | Promise<void>) => {
         ready: Promise<void>;
       };
     };
@@ -88,7 +86,7 @@ export default function ThemeToggle() {
       type="button"
       onClick={toggleTheme}
       aria-label={isDark ? "Switch to light theme" : "Switch to dark theme"}
-      className="flex h-9 w-9 items-center justify-center rounded-full bg-card text-foreground transition-colors duration-200 hover:bg-lime hover:text-[#1a2a00] sm:ml-3"
+      className="flex h-9 w-9 items-center justify-center rounded-full bg-card text-foreground transition-colors duration-200 hover:bg-lime hover:text-[#1a2a00] "
     >
       {isDark ? <FiSun size={16} /> : <FiMoon size={16} />}
     </button>

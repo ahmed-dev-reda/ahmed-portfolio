@@ -44,7 +44,7 @@ export default function ProjectImage({
           alt={`${project.title} preview`}
           fill
           sizes="(min-width: 768px) 40vw, 70vw"
-          className="object-contain blur-[1px] group-hover:blur-none transition-all duration-500 ease-in-out"
+          className="object-contain lg:blur-[1px] lg:group-hover:blur-none transition-all duration-500 ease-in-out"
         />
 
         {/* Zoom hint */}
