@@ -5,6 +5,7 @@ import { featuredProjects, type FeaturedProject } from "@/components/data";
 import Reveal from "@/components/sections/reveal";
 import ProjectImage from "@/components/sections/project-image";
 import { projectDescription, useI18n } from "@/components/providers/i18n";
+import { cn } from "@/lib/utils";
 
 function ProjectRow({ label, value }: { label: string; value: string }) {
   return (
@@ -94,7 +95,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
 }
 
 export default function Projects() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   return (
     <section id="work" className="section-divider scroll-mt-24">
       <div className="mx-auto max-w-[1200px] px-6 py-16 sm:px-10 md:py-20 lg:px-[3%] lg:py-24">
@@ -102,7 +103,12 @@ export default function Projects() {
           <h2 className="display-heading text-4xl text-foreground sm:text-5xl md:text-6xl">
             {t("projects_heading")}
           </h2>
-          <p className="mt-4 max-w-md text-sm text-secondary">
+          <p
+            className={cn(
+              "max-w-md text-sm text-secondary",
+              locale === "ar" ? "mt-10" : "mt-4",
+            )}
+          >
             {t("projects_blurb")}
           </p>
         </Reveal>

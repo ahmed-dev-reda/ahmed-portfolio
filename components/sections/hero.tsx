@@ -15,7 +15,10 @@ export default function Hero() {
     locale === "ar" ? (portfolio.introAr ?? portfolio.intro) : portfolio.intro;
   return (
     <section className="relative overflow-hidden">
-      <div className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-10 px-6 py-16 sm:px-10 md:py-20 lg:grid-cols-2 lg:gap-16 lg:px-[3%] lg:py-24">
+      <div
+        className="relative z-10 mx-auto grid max-w-[1200px] items-center gap-10 px-6 py-16 
+      sm:px-10 md:py-20 lg:grid-cols-2 lg:gap-16 lg:px-[3%] lg:py-24"
+      >
         {/* Text */}
         <div className="order-2 lg:order-1">
           <Reveal>

@@ -4,6 +4,7 @@ import { FaArrowUpRightFromSquare } from "react-icons/fa6";
 import { services, type Service } from "@/components/data";
 import Reveal from "@/components/sections/reveal";
 import { useI18n } from "@/components/providers/i18n";
+import { cn } from "@/lib/utils";
 
 function ServiceCard({ service }: { service: Service }) {
   const { t, locale } = useI18n();
@@ -38,7 +39,7 @@ function ServiceCard({ service }: { service: Service }) {
 }
 
 export default function Services() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   return (
     <section id="services" className="section-divider scroll-mt-24">
@@ -47,14 +48,24 @@ export default function Services() {
           <h2 className="display-heading text-4xl text-foreground sm:text-5xl md:text-6xl">
             {t("services_heading")}
           </h2>
-          <p className="mt-4 max-w-md text-sm text-secondary">
+          <p
+            className={cn(
+              "max-w-md text-sm text-secondary",
+              locale === "ar" ? "mt-10" : "mt-4",
+            )}
+          >
             {t("services_blurb")}
           </p>
         </Reveal>
 
         <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service, index) => (
-            <Reveal key={service.id} delay={index * 0.05} className="h-full">
+            <Reveal
+              key={service.id}
+              delay={index * 0.05}
+              amount={0.5}
+              className="h-full"
+            >
               <ServiceCard service={service} />
             </Reveal>
           ))}
