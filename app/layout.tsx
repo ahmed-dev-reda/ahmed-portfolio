@@ -20,7 +20,7 @@ const cairo = Cairo({
   variable: "--font-cairo",
 });
 
-const siteUrl = "https://ahmed-reda-dev.vercel.app";
+const siteUrl = "https://ahmedreda-dev.vercel.app";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
